@@ -1,0 +1,23 @@
+{
+  "name": "chat-nodejs-socket.io",
+  "version": "1.0.0",
+  "description": "Chat server socket.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simplesoft-duongdt3/chat-nodejs-socket.io.git"
+  },
+  "author": "duongdt3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simplesoft-duongdt3/chat-nodejs-socket.io/issues"
+  },
+  "homepage": "https://github.com/simplesoft-duongdt3/chat-nodejs-socket.io#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.4.0"
+  }
+}
