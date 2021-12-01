@@ -31,14 +31,22 @@
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     if (input.value) {
-      socket.emit('chat', input.value);
+      console.log("submit socket.userId: " + socket.userId)
+      //receiverUserId for CS only
+      socket.emit('chat', { msg: input.value, receiverUserId: 2 });
       input.value = '';
     }
   });
 
+  socket.on('user_id', function(msg) {
+    console.log("msg.userId: " + msg.userId)
+    socket.userId = msg.userId;
+    console.log("socket.userId: " + socket.userId)
+  });
+
   socket.on('news', function(msg) {
     var item = document.createElement('li');
-    item.textContent = msg;
+    item.textContent = msg.msg + " " + msg.receiverUserId;
     messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);
   });
