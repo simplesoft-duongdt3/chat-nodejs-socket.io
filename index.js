@@ -5,17 +5,20 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
 
-app.get('/user-chat', (req, res) => {
-  res.sendFile(__dirname + '/user.html');
-});
+app.use('/', express.static('static'))
 
-app.get('/cs-chat', (req, res) => {
-  res.sendFile(__dirname + '/cs.html');
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + '/index.html');
+// });
+
+// app.get('/user-chat', (req, res) => {
+//   res.sendFile(__dirname + '/user.html');
+// });
+
+// app.get('/cs-chat', (req, res) => {
+//   res.sendFile(__dirname + '/cs.html');
+// });
 
 function getUserId(socket) {
   return socket.userId;
