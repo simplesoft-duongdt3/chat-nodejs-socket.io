@@ -40,11 +40,16 @@
     socket.userId = msg.userId;
   });
 
-  socket.on('news', function(msg) {
-    var item = document.createElement('li');
-    item.textContent = msg.msg + " sender:" + msg.sender;
-    messages.appendChild(item);
-    window.scrollTo(0, document.body.scrollHeight);
+  socket.on('news', function(msgList) {
+    for (const msg of msgList) {
+      var item = document.createElement('li');
+      item.textContent = msg.msg + " senderId: " + msg.senderId + " receiverId: " + msg.receiverId + " roomId: " + msg.roomId + " sendTime: " + msg.sendTime;
+      messages.appendChild(item);
+    }
+
+    if (msgList.length > 0) {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
   });
     </script>
   </body>

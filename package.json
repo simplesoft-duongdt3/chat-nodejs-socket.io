@@ -1,5 +1,6 @@
 {
   "name": "chat-nodejs-socket.io",
+  "type": "module",
   "version": "1.0.0",
   "description": "Chat server socket.io",
   "main": "index.js",
@@ -18,6 +19,8 @@
   "homepage": "https://github.com/simplesoft-duongdt3/chat-nodejs-socket.io#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^4.4.0"
+    "sequelize": "^6.12.0-alpha.1",
+    "socket.io": "^4.4.0",
+    "sqlite3": "^5.0.2"
   }
 }
