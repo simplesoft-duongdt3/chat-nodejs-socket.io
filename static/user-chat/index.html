@@ -31,7 +31,7 @@
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     if (input.value) {
-      socket.emit('chat', { msg: input.value, sender: socket.userId });
+      socket.emit('chat', { msg: input.value });
       input.value = '';
     }
   });
@@ -51,6 +51,20 @@
       window.scrollTo(0, document.body.scrollHeight);
     }
   });
+  socket.on('old_news', function(msgList) {
+    removeAllChildNodes(messages);
+    for (const msg of msgList) {
+      var item = document.createElement('li');
+      item.textContent = msg.msg + " senderId: " + msg.senderId + " receiverId: " + msg.receiverId + " roomId: " + msg.roomId + " sendTime: " + msg.sendTime;
+      messages.appendChild(item);
+    }
+
+    if (msgList.length > 0) {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  });
+
+
     </script>
   </body>
 </html>

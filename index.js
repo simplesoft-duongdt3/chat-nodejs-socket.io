@@ -33,7 +33,9 @@ async function main() {
   var numUser = 0;
 
   io.use((socket, next) => {
-    // const token = socket.handshake.auth.token;
+    //console.log("auth " + socket.handshake.auth);
+    //const token = socket.handshake.auth.token;
+    //console.log("auth token " + socket.handshake.auth.token);
     // if (!token) {
     //   return next(new Error("invalid user, need login"));
     // }
@@ -70,11 +72,12 @@ async function main() {
         socket.join("room_user_" + socket.userId);
 
         const msgList = await messageStore.findMessagesForUser(socket.userId)
-        io.to(socket.id).emit('news', msgList)
+        io.to(socket.id).emit('old_news', msgList)
       }
       //socket.join("room_private_" + userId);
 
       socket.on('chat', (msg) => {
+        console.log("chat msg " + JSON.stringify(msg));
         var roomId = socket.userId;
         if(isCs) {
           roomId = msg.receiverUserId;

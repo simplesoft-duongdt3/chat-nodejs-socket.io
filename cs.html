@@ -31,7 +31,7 @@
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     if (input.value) {
-      socket.emit('chat', { msg: input.value, receiverUserId: 1, sender: socket.userId });
+      socket.emit('chat', { msg: input.value, receiverUserId: 1 });
       input.value = '';
     }
   });
@@ -43,6 +43,14 @@
   });
 
   socket.on('news', function(msg) {
+    var item = document.createElement('li');
+    item.textContent = msg.msg + " receiverUserId: " + msg.receiverUserId + " sender: " + msg.sender;
+    messages.appendChild(item);
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+
+  socket.on('old_news', function(msg) {
+    removeAllChildNodes(messages);
     var item = document.createElement('li');
     item.textContent = msg.msg + " receiverUserId: " + msg.receiverUserId + " sender: " + msg.sender;
     messages.appendChild(item);
